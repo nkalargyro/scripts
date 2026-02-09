@@ -1,0 +1,17 @@
+# Windows
+desktop.ini
+thumbs.db
+Thumbs.db
+
+# PowerShell
+*.ps1xml
+
+# Logs and output
+*.log
+*.txt
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/

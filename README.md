@@ -36,3 +36,34 @@ Sorts files from `~/Downloads` into categorized subfolders under `~/Organized`.
 - Handles duplicate filenames by appending `(1)`, `(2)`, etc.
 - Skips system files (`desktop.ini`, `thumbs.db`, `ntuser*`)
 - Logs all moves to `~/Organized/organize-log.txt`
+
+## Detect-Keyloggers.ps1
+
+Scans the local system for common keylogger indicators and suspicious activity.
+
+### What it checks
+
+| Check | Description |
+|---|---|
+| Hook Modules | Scans running processes for DLLs with hook/capture/spy keywords |
+| Startup Entries | Lists all auto-run registry entries |
+| Hidden Processes | Flags windowless processes from non-system paths |
+| Scheduled Tasks | Lists non-Microsoft scheduled tasks |
+| Drop Locations | Searches temp folders for keylog-named files |
+| Defender Threats | Queries recent Windows Defender threat detections |
+
+### Usage
+
+```powershell
+# Run a scan
+.\Detect-Keyloggers.ps1
+
+# Custom log path
+.\Detect-Keyloggers.ps1 -LogPath "C:\path\to\report.txt"
+```
+
+### Notes
+
+- Report is appended to `~/Organized/security-scan.txt` by default
+- Run as administrator for full Defender threat history access
+- Some legitimate software (screen capture tools, hardware monitors) may trigger informational warnings
